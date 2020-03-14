@@ -45,6 +45,34 @@ let j2 = d3.line()
     .y((d) => {
         return y_scale(d.joints[1]);
     });
+let j3 = d3.line()
+    .x((d) => {
+        return x_scale(Date.parse(d.time));
+    })
+    .y((d) => {
+        return y_scale(d.joints[2]);
+    });
+let j4 = d3.line()
+    .x((d) => {
+        return x_scale(Date.parse(d.time));
+    })
+    .y((d) => {
+        return y_scale(d.joints[3]);
+    });
+let j5 = d3.line()
+    .x((d) => {
+        return x_scale(Date.parse(d.time));
+    })
+    .y((d) => {
+        return y_scale(d.joints[4]);
+    });
+let j6 = d3.line()
+    .x((d) => {
+        return x_scale(Date.parse(d.time));
+    })
+    .y((d) => {
+        return y_scale(d.joints[5]);
+    });
 
 g.append("g").attr("class", "axis x");
 g.append("g").attr("class", "axis y");
@@ -60,6 +88,30 @@ g.append("path")
     .attr("d", j2)
     .style('fill', 'none')
     .style('stroke', '#0F0');
+g.append("path")
+    .datum(joint_datas)
+    .attr("class", "j3")
+    .attr("d", j3)
+    .style('fill', 'none')
+    .style('stroke', '#F00');
+g.append("path")
+    .datum(joint_datas)
+    .attr("class", "j4")
+    .attr("d", j4)
+    .style('fill', 'none')
+    .style('stroke', '#077');
+g.append("path")
+    .datum(joint_datas)
+    .attr("class", "j5")
+    .attr("d", j5)
+    .style('fill', 'none')
+    .style('stroke', '#707');
+g.append("path")
+    .datum(joint_datas)
+    .attr("class", "j6")
+    .attr("d", j6)
+    .style('fill', 'none')
+    .style('stroke', '#770');
 
 const resize = () => {
     width = window.innerWidth - margin.left - margin.right
@@ -89,4 +141,12 @@ const update_chart = () => {
         .attr("d", j1(joint_datas));
     svg.select(".j2") // change the line
         .attr("d", j2(joint_datas));
+    svg.select(".j3") // change the line
+        .attr("d", j3(joint_datas));
+    svg.select(".j4") // change the line
+        .attr("d", j4(joint_datas));
+    svg.select(".j5") // change the line
+        .attr("d", j5(joint_datas));        
+    svg.select(".j6") // change the line
+        .attr("d", j6(joint_datas));  
 };
